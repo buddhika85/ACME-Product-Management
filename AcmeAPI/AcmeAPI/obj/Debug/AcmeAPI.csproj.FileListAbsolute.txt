@@ -115,3 +115,6 @@ D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\obj\Debug\AcmeAPI.csproj.Cor
 D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\obj\Debug\AcmeAPI.csproj.CopyComplete
 D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\obj\Debug\AcmeAPI.dll
 D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\obj\Debug\AcmeAPI.pdb
+D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\bin\System.Web.Cors.dll
+D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\bin\System.Web.Http.Cors.dll
+D:\Projects_Mine\ACMEProdManagement\AcmeAPI\AcmeAPI\bin\System.Web.Http.Cors.xml

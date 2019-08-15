@@ -2,7 +2,7 @@ import { Product, IProduct } from "./Product";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 // import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 
@@ -13,14 +13,20 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 export class ProductService
 {
 
-    private productUrl = 'api/products/products.json';
+    private productUrl = 'http://localhost:51681/api/Product/SearchProducts'; //'api/products/products.json';
 
     constructor(private http : HttpClient) 
     {
     }    
 
-    getProductsHttp(): Observable<IProduct[]> {
-        return this.http.get<IProduct[]>(this.productUrl).pipe(
+    searchProducts(str : string): Observable<IProduct[]> 
+    {
+        let searchQueryString = this.productUrl;
+
+        const params = new HttpParams().set('searchString', str);
+
+        //debugger
+        return this.http.get<IProduct[]>(searchQueryString, {params}).pipe(
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)
         );
@@ -43,25 +49,25 @@ export class ProductService
     }
     
     // search
-    getFilteredProducts(filteredBy : string, list : IProduct[]) : IProduct[] 
-    {       
-        if (list && filteredBy && filteredBy !== '')
-        {                 
-            let resultList : IProduct [] = [];
-            let lowereCaseFilter : string = filteredBy.toLowerCase();
-            list.forEach(element => {
-                if (element.productName.toLocaleLowerCase().includes(lowereCaseFilter) || element.description.toLocaleLowerCase().includes(lowereCaseFilter) || 
-                  element.productCode.toLocaleLowerCase().includes(lowereCaseFilter))
-                {
-                  resultList.push(element);
-                }
-            });
+    // getFilteredProducts(filteredBy : string, list : IProduct[]) : IProduct[] 
+    // {       
+    //     if (list && filteredBy && filteredBy !== '')
+    //     {                 
+    //         let resultList : IProduct [] = [];
+    //         let lowereCaseFilter : string = filteredBy.toLowerCase();
+    //         list.forEach(element => {
+    //             if (element.productName.toLocaleLowerCase().includes(lowereCaseFilter) || element.description.toLocaleLowerCase().includes(lowereCaseFilter) || 
+    //               element.productCode.toLocaleLowerCase().includes(lowereCaseFilter))
+    //             {
+    //               resultList.push(element);
+    //             }
+    //         });
 
-            return resultList;         
-        }
-        else
-        {
-            return list;
-        }
-    }
+    //         return resultList;         
+    //     }
+    //     else
+    //     {
+    //         return list;
+    //     }
+    // }
 }

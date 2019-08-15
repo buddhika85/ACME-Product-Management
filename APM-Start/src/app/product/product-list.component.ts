@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit
 {
   
     pageTitle : string = 'Product List';
-    productsList : IProduct [];
+   
     filteredProductList : IProduct [];
     imageWidth : number = 50;
     imageMargin : number = 2;
@@ -33,15 +33,20 @@ export class ProductListComponent implements OnInit
     set filteredBy(value : string)
     {
       this._filteredBy = value;
-      this.filteredProductList = this.getFilteredProducts();
+      this.searchProducts();
     }
   
 
-    getFilteredProducts() : IProduct []
-    {      
-        let cloned : IProduct [] =  this.productsList.map(x => Object.assign({}, x));        
-        let filteredProductList : IProduct [] = this.productService.getFilteredProducts(this.filteredBy, cloned);
-        return filteredProductList;
+    searchProducts() : any
+    {     
+          this.productService.searchProducts(this.filteredBy).subscribe(
+          
+          result => {        
+            //debugger    
+            this.filteredProductList = result;             
+          },
+          error => this.errorMessage = <any>error
+        );
     }
 
     toggleImages() : void 
@@ -64,14 +69,14 @@ export class ProductListComponent implements OnInit
 
     ngOnInit(): void 
     {     
-      this.productService.getProductsHttp().subscribe(
+      // this.productService.searchProducts(this.filteredBy).subscribe(
         
-        result => {
-          this.productsList = result;
-          this.filteredProductList = result;
-        },
-        error => this.errorMessage = <any>error
-      );         
-      
+      //   result => {
+      //     this.productsList = result;
+      //     this.filteredProductList = result;
+      //   },
+      //   error => this.errorMessage = <any>error
+      // );         
+      this.searchProducts();
     }
 }

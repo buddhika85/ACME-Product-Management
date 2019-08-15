@@ -20,9 +20,9 @@ namespace AcmeAPI.Models
 
     public class ProductService
     {
-        public List<Product> GetAllProducts()
+        public List<Product> GetAllProducts(string searchString)
         {
-            return new List<Product>
+            var list = new List<Product>
             {
 
                 new Product {
@@ -74,9 +74,30 @@ namespace AcmeAPI.Models
                     price = 35.95,
                     starRating = 4.6,
                     imageUrl = "https =//openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
-                }
+                },
+                new Product {
+                    productId = 12,
+                    productName = "Product from service",
+                    productCode = "GDN-0011",
+                    releaseDate = "March 19, 2016",
+                    description = "Leaf rake with 48-inch wooden handle.",
+                    price = 19.95,
+                    starRating = 3.2,
+                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+                },
 
             };
+
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                searchString = searchString.Trim().ToLower();
+                list = list.Where(x =>
+                    (x.productName != null && x.productName.ToLower().Contains(searchString)) || 
+                    (x.productCode != null && x.productCode.ToLower().Contains(searchString)) ||
+                    (x.description != null && x.description.ToLower().Contains(searchString))).ToList();
+            }
+
+            return list;
         }
     }
 }

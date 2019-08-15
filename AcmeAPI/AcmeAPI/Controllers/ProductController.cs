@@ -1,10 +1,13 @@
 ﻿using AcmeAPI.Models;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AcmeAPI.Controllers
 {
+    // https://stackoverflow.com/questions/18619656/enable-cors-in-web-api-2
     [AllowAnonymous]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Product")]
     public class ProductController : ApiController
     {
@@ -16,11 +19,11 @@ namespace AcmeAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetAllProducts()
+        public IHttpActionResult SearchProducts(string searchString = "")
         {
             try
             {
-                var products = ProductService.GetAllProducts();
+                var products = ProductService.GetAllProducts(searchString);
                 return Ok(products);
             }
             catch (Exception e)
