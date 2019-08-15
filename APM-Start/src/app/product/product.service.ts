@@ -46,28 +46,5 @@ export class ProductService
       }
       console.error(errorMessage);
       return throwError(errorMessage);
-    }
-    
-    // search
-    // getFilteredProducts(filteredBy : string, list : IProduct[]) : IProduct[] 
-    // {       
-    //     if (list && filteredBy && filteredBy !== '')
-    //     {                 
-    //         let resultList : IProduct [] = [];
-    //         let lowereCaseFilter : string = filteredBy.toLowerCase();
-    //         list.forEach(element => {
-    //             if (element.productName.toLocaleLowerCase().includes(lowereCaseFilter) || element.description.toLocaleLowerCase().includes(lowereCaseFilter) || 
-    //               element.productCode.toLocaleLowerCase().includes(lowereCaseFilter))
-    //             {
-    //               resultList.push(element);
-    //             }
-    //         });
-
-    //         return resultList;         
-    //     }
-    //     else
-    //     {
-    //         return list;
-    //     }
-    // }
+    }  
 }

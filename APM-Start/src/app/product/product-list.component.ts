@@ -39,10 +39,10 @@ export class ProductListComponent implements OnInit
 
     searchProducts() : any
     {     
-          this.productService.searchProducts(this.filteredBy).subscribe(
+        this.productService.searchProducts(this.filteredBy).subscribe(
           
-          result => {        
-            //debugger    
+        result => {        
+          //debugger    
             this.filteredProductList = result;             
           },
           error => this.errorMessage = <any>error
@@ -68,15 +68,7 @@ export class ProductListComponent implements OnInit
     }
 
     ngOnInit(): void 
-    {     
-      // this.productService.searchProducts(this.filteredBy).subscribe(
-        
-      //   result => {
-      //     this.productsList = result;
-      //     this.filteredProductList = result;
-      //   },
-      //   error => this.errorMessage = <any>error
-      // );         
-      this.searchProducts();
+    {    
+        this.searchProducts();
     }
 }
