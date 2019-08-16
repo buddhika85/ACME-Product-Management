@@ -33,7 +33,7 @@ namespace AcmeAPI.Models
                     description = "Leaf rake with 48-inch wooden handle.",
                     price = 19.95,
                     starRating = 3.2,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
                 },
                 new Product {
                     productId = 2,
@@ -43,7 +43,7 @@ namespace AcmeAPI.Models
                     description = "15 gallon capacity rolling garden cart",
                     price = 32.99,
                     starRating = 4.2,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
                 },
                 new Product {
                     productId = 5,
@@ -53,7 +53,7 @@ namespace AcmeAPI.Models
                     description = "Curved claw steel hammer",
                     price = 8.9,
                     starRating = 4.8,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
                 },
                 new Product {
                     productId = 8,
@@ -63,7 +63,7 @@ namespace AcmeAPI.Models
                     description = "15-inch steel blade hand saw",
                     price = 11.55,
                     starRating = 3.7,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
                 },
                 new Product {
                     productId = 10,
@@ -73,7 +73,7 @@ namespace AcmeAPI.Models
                     description = "Standard two-button video game controller",
                     price = 35.95,
                     starRating = 4.6,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
                 },
                 new Product {
                     productId = 12,
@@ -83,7 +83,7 @@ namespace AcmeAPI.Models
                     description = "Leaf rake with 48-inch wooden handle.",
                     price = 19.95,
                     starRating = 3.2,
-                    imageUrl = "https =//openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+                    imageUrl = "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
                 },
 
             };
