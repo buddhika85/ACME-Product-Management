@@ -13,15 +13,15 @@ import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http"
 export class ProductService
 {
 
-    private productUrl = 'http://localhost:51681/api/Product/SearchProducts'; //'api/products/products.json';
-
+    private productUrl = 'http://localhost:51681/api/Product'; //'api/products/products.json';
+  
     constructor(private http : HttpClient) 
     {
     }    
 
     searchProducts(str : string): Observable<IProduct[]> 
     {
-        let searchQueryString = this.productUrl;
+        let searchQueryString = this.productUrl + '/SearchProducts';
 
         const params = new HttpParams().set('searchString', str);
 
@@ -30,6 +30,17 @@ export class ProductService
           tap(data => console.log('All: ' + JSON.stringify(data))),
           catchError(this.handleError)
         );
+    }
+
+    getProductById(id : number) : Observable<IProduct>
+    {
+      let searchQueryString = this.productUrl + '/GetProductById';
+      const params = new HttpParams().set('productId', id.toString());
+
+      return this.http.get<IProduct>(searchQueryString, {params}).pipe(
+        tap(data => console.log('Product: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
     }
 
     private handleError(err: HttpErrorResponse) {

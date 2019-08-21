@@ -10,6 +10,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './product/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { ProductDetailGuard } from './product/product-detail.guard';
 
 
 
@@ -20,7 +21,7 @@ import { WelcomeComponent } from './home/welcome.component';
     ConvertToSpacesPipe,
     StarComponent,
     ProductDetailComponent,
-    WelcomeComponent
+    WelcomeComponent  
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,11 @@ import { WelcomeComponent } from './home/welcome.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path : 'products', component: ProductListComponent},
-      {path : 'product/:Id', component: ProductDetailComponent},
+      { 
+        path : 'product/:id', 
+        canActivate: [ ProductDetailGuard ],    // avoid navigation on invalid product ID
+        component: ProductDetailComponent
+      },
       {path : 'welcome', component: WelcomeComponent},
       {path : '', redirectTo : 'welcome', pathMatch : 'full'},
       {path : '**', redirectTo : 'welcome', pathMatch : 'full'}

@@ -2,6 +2,8 @@
 using System;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Results;
+using Microsoft.Owin.Security.Provider;
 
 namespace AcmeAPI.Controllers
 {
@@ -23,8 +25,27 @@ namespace AcmeAPI.Controllers
         {
             try
             {
-                var products = ProductService.GetAllProducts(searchString);
+                var products = ProductService.SearchProducts(searchString);
                 return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetProductById(int productId)
+        {
+            try
+            {
+                var product = ProductService.GetProductById(productId);
+                if (product != null)
+                {
+                    return Ok(product);
+                }
+                return NotFound();
             }
             catch (Exception e)
             {
