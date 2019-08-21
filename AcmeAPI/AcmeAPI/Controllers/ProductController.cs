@@ -2,8 +2,6 @@
 using System;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.Results;
-using Microsoft.Owin.Security.Provider;
 
 namespace AcmeAPI.Controllers
 {
